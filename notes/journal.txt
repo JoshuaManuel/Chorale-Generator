@@ -1,0 +1,5 @@
+Sometime before:
+Met with Mrs. Cooper to talk about what type of music to generate. I suggested 4-part writing (as we were learning that in class) and she agreed. Thinking about using Markov chains to choose each chord, and as the piece goes on I'll change the probabilities (so that it will usually start and end on I/i)
+
+Wed Nov 25
+The day before Thanksgiving. Yay. I started writing the "SuperKey" class. My idea will be abstract the key such that I can write each voice independent of it. So far, i'm only planning to support major scales. If I have extra time, I'll add in minor.
