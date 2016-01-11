@@ -13,9 +13,10 @@ class Voice(object):
     k = object;
     p = object;
     
-    # A 2-D list of voices. The order is Bass, Tenor, Alto, Soprano.
+    
     NUMBER_OF_VOICES = 4;
     noteNames = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+    # A 2-D list of voices. The order is Bass, Tenor, Alto, Soprano.
     voices = [];
     chordNotes = [];
     
@@ -33,18 +34,19 @@ class Voice(object):
         
         for num in range(0, self.NUMBER_OF_VOICES):
             self.voices.append(self.createVoice());
+        print("v.voices: " + str(self.voices));
         
     def createVoice(self):
         ans = [];
-        for num in range(0, len(self.k.chordNotes)):
-            ans.append(self.k.chordNotes[num][random.randint(0, len(self.k.chordNotes[num])-1)]);
-            #ans.append(self.chordNotes[num][random.randint(0, len(self.chordNotes[num])-1)]);
-            
-        print("ans: " + str(ans));
+        for chord in self.p.prog:
+            ans.append(self.k.chordNotes[chord.root-1][random.randint(0,2)]);
         return ans;
     
+    
+    '''
+    #Implement if enough time.
+    
     def checkDoubling(self):
-        print("TODO");
         #make sure each note is done once, then last can be whatever.
         
     def checkInterval(self):
@@ -57,10 +59,8 @@ class Voice(object):
         return score;
     
     def checkVoiceLeading(self):
-        print("TODO");
     
-    def refine(self):
-        print("TODO"); #depends on only block chords to work. Otherwise, will need a new system.
+    def refine(self): #depends on only block chords to work. Otherwise, will need a new system.
         #Check intervals between notes
         self.checkInterval();
         self.checkDoubling();
@@ -68,6 +68,6 @@ class Voice(object):
         
     def getInterval(self, first, second):
         return abs(first - second);
-    
+    '''
 
         

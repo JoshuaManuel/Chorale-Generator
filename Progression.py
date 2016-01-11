@@ -41,10 +41,8 @@ class Progression(object):
         
         self.k = k;
         self.createProgression(numChords);
-        for chord in self.prog:
-            print("root: " + str(chord.root))
     def createProgression(self, numChords):
-        print("Creating chord progressions in progress!");
+        print("Creating chord progressions!");
         #Using markov chains
         
         seed = datetime.datetime.now();
@@ -54,7 +52,6 @@ class Progression(object):
         self.prog.append(Chord(self.k, 1));
         for num in range(0, numChords): # actually adds one extra chord (I) at the end.
             lastChord = self.prog[len(self.prog)-1];
-            print("lastChord root: " + str(lastChord.root));
             chainList = self.chain[lastChord.root];
             randNum = random.randint(0, len(chainList)-1);
             chosenRank = chainList[randNum];
