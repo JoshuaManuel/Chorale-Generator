@@ -36,23 +36,38 @@ class Voice(object):
         
     def createVoice(self):
         ans = [];
-        for num in range(0, len(self.chordNotes)):
-            print("num: " + str(num));
-            ans.append(self.chordNotes[num][random.randint(0, len(self.chordNotes[num])-1)]);
+        for num in range(0, len(self.k.chordNotes)):
+            ans.append(self.k.chordNotes[num][random.randint(0, len(self.k.chordNotes[num])-1)]);
+            #ans.append(self.chordNotes[num][random.randint(0, len(self.chordNotes[num])-1)]);
             
         print("ans: " + str(ans));
         return ans;
     
     def checkDoubling(self):
         print("TODO");
-        for voice in self.voices:
-            
+        #make sure each note is done once, then last can be whatever.
+        
+    def checkInterval(self):
+        score = 0;
+        for note in self.voices[0]:
+            for otherVoice in range(1, len(self.voices)):
+                interval = self.getInterval(note, self.voices[otherVoice]);
+                if interval > 3:
+                    score -= interval - 3;
+        return score;
+    
+    def checkVoiceLeading(self):
+        print("TODO");
     
     def refine(self):
-        print("TODO");
+        print("TODO"); #depends on only block chords to work. Otherwise, will need a new system.
+        #Check intervals between notes
+        self.checkInterval();
         self.checkDoubling();
+        self.checkVoiceLeading();
         
     def getInterval(self, first, second):
-        print("TODO");
         return abs(first - second);
+    
+
         

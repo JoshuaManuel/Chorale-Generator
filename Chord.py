@@ -40,3 +40,4 @@ class Chord(object):
             '''
         else:
             print("Error, not a valid root!");
+            print("The invalid root is: " + str(root));

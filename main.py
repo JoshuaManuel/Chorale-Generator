@@ -1,21 +1,21 @@
 from AnyKey import AnyKey #@UnresolvedImport
 from Progression import Progression #@UnresolvedImport
 from Voice import Voice #@UnresolvedImport
-from Chord import Chord #@UnresolvedImport
 
     
 #Global vars
-
-TEMPO = 80;
+WELCOME = "\tWelcome to the Chorale Generator!"
+TEMPO = 60;
 def run():
+    
     body = "";
     body += "(tempo! " + str(TEMPO) + ")\n"
     print(body);
     
-    
-    k = AnyKey("F#M");
-    p = Progression(k, [1,5,4,6,1]);
+    k = AnyKey("C M");
+    p = Progression(k, 10);
     v = Voice(k, p);
+    
     
     file = open('test.alda', 'w');
     
@@ -32,13 +32,25 @@ def run():
     
     for num in range(1, len(v.voices)+1):
         body += "V" + str(num) + ": o" +str(num);
-        for note in v.voices[num-1]:
-            body += " " + note;
+        body += k.translate(v.voices[num-1]);
+        
+        #for note in v.voices[num-1]:
+        #    body += " " + str(note);
         body += "\n";
     
     #body += "v1:" + str(v.soprano) + str(v.alto) + str(v.tenor) + str(v.bass);
     print(body);
     file.write(body);
 
+def debug():
+    k = AnyKey("C M");
+    p = Progression(k, [1,5,4,6,1]);
+    v = Voice(k, p);
+    
+    for voice in v.voices:
+        voice
+    
+
 if __name__ == '__main__':
     run();
+    #debug();

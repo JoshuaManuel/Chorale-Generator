@@ -13,13 +13,14 @@ class AnyKey(object):
     legend = {'c': 0, 'd': 2, 'e': 4, 'f': -1, 'g': 1, 'a': 3, 'b': 5};
     noteNames = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
     majorQualities = ['M', 'm', 'm', 'M', 'M', 'm', 'd'];
-    notes = [];
     chords = [];
+    chordNotes = [[1,3,5],[2,4,6],[3,5,7],[4,6,1],[5,7,2],[6,1,3],[7,2,4]];
     
     def __init__(self, key):
         '''
         Creates the notes array
         '''
+        self.notes = [];
         #make first letter lowercase
         key = key[0].lower() + key[1:];
         if len(key) == 3:
@@ -57,12 +58,17 @@ class AnyKey(object):
                 print("Invalid key!");
         else:
             print("Invalid key!");
-    #Accessor methods for typing convenience        
+    #Accessor methods for typing convenience    
     def n(self, index):
         return self.notes[index -1];
     
     def c(self, index):
-        print("chord: " + str(self.chords));
         return self.chords[index -1];
+    
+    def translate(self, notes): #notes is an array of numbers
+        ans = "";
+        for noteDegree in notes:
+            ans += " " + self.n(noteDegree);
+        return ans;
 if __name__ == '__main__':
     a = AnyKey("C#M");
