@@ -60,6 +60,7 @@ class AnyKey(object):
             print("Invalid key!");
     #Accessor methods for typing convenience    
     def n(self, index):
+        print("notes: " + str(self.notes));
         return self.notes[index -1];
     
     def c(self, index):

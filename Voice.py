@@ -34,7 +34,27 @@ class Voice(object):
         
         for num in range(0, self.NUMBER_OF_VOICES):
             self.voices.append(self.createVoice());
+        #Force specific voicing for first and last chord
+        lastNote = len(self.voices[0])-1
+        
+        self.voices[0][0] = 1;
+        self.voices[1][0] = 3;
+        self.voices[2][0] = 5;
+        self.voices[3][0] = 1;
+        
+        self.voices[0][lastNote-1] = 5;
+        self.voices[1][lastNote-1] = 2;
+        self.voices[2][lastNote-1] = 7;
+        self.voices[3][lastNote-1] = 5;
+        
+        self.voices[0][lastNote] = 1;
+        self.voices[1][lastNote] = 3;
+        self.voices[2][lastNote] = 5;
+        self.voices[3][lastNote] = 1;
+        
         print("v.voices: " + str(self.voices));
+        
+        
         
     def createVoice(self):
         ans = [];

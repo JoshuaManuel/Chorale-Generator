@@ -8,7 +8,10 @@ About
 
 Installation
 ------------
-+ Don't try to install it, yet.
++ A working version of Alda is needed. The GitHub project can be found here: https://github.com/alda-lang/alda#installation
++ You'll also need python3.
++ An introduction to the Alda language can be found here: http://daveyarwood.github.io/alda/2015/09/05/alda-a-manifesto-and-gentle-introduction/
+
 
 Contact
 -------
